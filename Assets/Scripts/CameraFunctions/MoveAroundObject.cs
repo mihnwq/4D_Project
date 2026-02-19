@@ -25,7 +25,7 @@ class MoveAroundObject : MonoBehaviour
     private float maxDistance = 100;
 
     [SerializeField]
-    private float minDistance = 3;
+    private float minDistance = 0;
 
     [SerializeField]
     public float mapSmoothTime = 0.2f;
