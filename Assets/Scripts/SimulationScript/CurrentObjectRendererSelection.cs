@@ -7,57 +7,54 @@ using UnityEngine;
 
 public class CurrentObjectRendererSelection : MonoBehaviour
 {
-    public List<GameObject> _4D_Objects;
 
-    public static GameObject currentObject;
+    private static GameObject selectedObject = null;
 
-    private int minObjectCount, maxObjectCount;
-
-    private int index = 1;
+    private static GameObject currentObject = null;
 
     [SerializeField]
-    Vector3 standardPosition;
+    private GameObject emptyObject;
 
-    GameObject instantiatedObject = null;
+    [SerializeField]
+    private Vector3 standardPosition;
 
-    _3Dto4D convertor;
+    private GameObject instantiatedObject = null;
+
+    private _3Dto4D convertor;
+
+    
 
     private void Start()
     {
-        minObjectCount = 0;
-        maxObjectCount = 1;
         convertor = new _3Dto4D();
-        MoveToNextObject(0);
+        MoveToNextObject(emptyObject);
+        convertor.SetCurrentObject(null);
     }
-
+  
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-            MoveToNextObject(1);
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-            MoveToNextObject(-1);
+        if(currentObject != selectedObject)
+        MoveToNextObject(selectedObject);
 
         convertor.UpdateMesh();
     }
 
 
 
-    private void MoveToNextObject(int nextPosition)
+    private void MoveToNextObject(GameObject _3D_Object)
     {
         if (instantiatedObject)
         {
             Destroy(instantiatedObject);
         }
 
-        index += nextPosition;
+        if (!_3D_Object || _3D_Object == emptyObject)
+        {
+            MoveAroundObject.SetTarget(emptyObject.transform);
+            return;
+        }
 
-        if (index < 0)
-            index = maxObjectCount;
-        else if (index > maxObjectCount)
-            index = minObjectCount;
-
-        instantiatedObject = Instantiate(_4D_Objects[index]);
+        instantiatedObject = Instantiate(_3D_Object);
 
         convertor.SetCurrentObject(instantiatedObject);
         convertor.Init();
@@ -71,6 +68,8 @@ public class CurrentObjectRendererSelection : MonoBehaviour
     }
 
     public static GameObject GetCurrentRenderedObject() => currentObject;
+
+    public static void SetRenderedObject(GameObject newObject) { selectedObject = newObject; }
 
 
 }

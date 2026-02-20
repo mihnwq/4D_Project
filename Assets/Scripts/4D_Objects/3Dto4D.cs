@@ -52,6 +52,9 @@ public class _3Dto4D
 
     public void UpdateMesh()
     {
+        if (!currentObject)
+            return;
+
         float t = Time.time * rotationSpeed;
 
 
