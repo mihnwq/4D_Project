@@ -25,7 +25,7 @@
                 float _Intensity;
                 float _ScrollW;
 
-                // You FORGOT these — required for color blending
+                
                 float4 _ColorA;
                 float4 _ColorB;
 
@@ -98,13 +98,12 @@
 
                     float n = snoise4(float4(uv.x, uv.y, _ScrollW, _Time.y * 0.1));
 
-                    // normalize noise 0 → 1
+                   
                     n = (n + 1.0) * 0.5;
 
-                    // smooth out the noise to avoid "river" look
                     n = smoothstep(0.2, 0.8, n);
 
-                    // blend between your two colors
+                    
                     float3 col = lerp(_ColorA.rgb, _ColorB.rgb, n);
 
                     return float4(col * _Intensity, 1);
