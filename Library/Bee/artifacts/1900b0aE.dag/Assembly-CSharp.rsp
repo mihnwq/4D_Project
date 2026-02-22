@@ -439,6 +439,7 @@
 "Assets/Scripts/4D_Objects/HypersphereGenerator.cs"
 "Assets/Scripts/4D_Objects/TesseractSlice4D.cs"
 "Assets/Scripts/4D_Objects/ThreeDFourDConversion.cs"
+"Assets/Scripts/AppManagaement/GamePanel.cs"
 "Assets/Scripts/CameraFunctions/CurrentObjectRenderer.cs"
 "Assets/Scripts/CameraFunctions/MoveAroundObject.cs"
 "Assets/Scripts/DrawFunctions/CanvasManager.cs"
