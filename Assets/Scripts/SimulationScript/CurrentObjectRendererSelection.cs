@@ -22,11 +22,13 @@ public class CurrentObjectRendererSelection : MonoBehaviour
 
     private _3Dto4D convertor;
 
-    
+    private void Awake()
+    {
+        convertor = new _3Dto4D();
+    }
 
     private void Start()
     {
-        convertor = new _3Dto4D();
         MoveToNextObject(emptyObject);
         convertor.SetCurrentObject(null);
     }
@@ -39,7 +41,10 @@ public class CurrentObjectRendererSelection : MonoBehaviour
         convertor.UpdateMesh();
     }
 
-
+    public _3Dto4D GetCurrentObjectConvertor()
+    {
+        return convertor;
+    }
 
     private void MoveToNextObject(GameObject _3D_Object)
     {

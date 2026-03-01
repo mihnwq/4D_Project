@@ -128,6 +128,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Obj_Loader\MTLLoader.cs" />
+    <Compile Include="Assets\Scripts\SimulationScript\ObjectAtributesSelection.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
@@ -1225,6 +1226,10 @@
     <ProjectReference Include="Unity.RenderPipelines.GPUDriven.Runtime.csproj">
       <Project>{79A1B2AC-F52E-583A-C9AE-1168E46BBA5B}</Project>
       <Name>Unity.RenderPipelines.GPUDriven.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="RuntimeInspector.Runtime.csproj">
+      <Project>{4445DC24-FD94-3096-C2F6-BC7E32B60916}</Project>
+      <Name>RuntimeInspector.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Collections.csproj">
       <Project>{B020DD5B-B977-E236-089A-E845BA800753}</Project>

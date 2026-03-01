@@ -34,6 +34,11 @@ public class _3Dto4D
         this.currentObject = currentObject;
     }
 
+    public void SetSpeed(float speed)
+    {
+        rotationSpeed = speed;
+    }
+
     public void Init()
     {
         originalMesh = currentObject.GetComponent<MeshFilter>().mesh;
@@ -53,12 +58,14 @@ public class _3Dto4D
         }
     }
 
+    private float angle;
+
     public void UpdateMesh()
     {
         if (!currentObject)
             return;
 
-        float t = Time.time * rotationSpeed;
+         angle += Time.deltaTime * rotationSpeed * Mathf.Rad2Deg;
 
         
 
@@ -82,8 +89,8 @@ public class _3Dto4D
             Vector4 v1 = currentVertices4D[i];
             /*   v1 = RotateXW(v1, t * 0.5f); // XW rotation
                v1 = RotateYW(v1, t * 0.3f); // YW rotation*/
-            v1 = Rotate4D(v1, t * 0.5f, 0, 3); // XW
-            v1 = Rotate4D(v1, t * 0.3f, 1, 3); // YW
+            v1 = Rotate4D(v1, angle * 0.5f, 0, 3); // XW
+            v1 = Rotate4D(v1, angle * 0.3f, 1, 3); // YW
            // v1 = Rotate4D(v1, t * 0.2f, 2, 3); // ZW
             currentVertices4D[i] = v1;
 
