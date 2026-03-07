@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class ObjectAtributesSelection : MonoBehaviour
 {
+    [SerializeField]
+    List<TMP_InputField> inputFields;
 
     private string name = " ";
 
@@ -58,6 +60,22 @@ public class ObjectAtributesSelection : MonoBehaviour
         }
 
         lastValue = value;
+    }
+
+    public void SetDeformStrength()
+    {
+       // Debug.Log(float.Parse(deformStrength.text));
+        convertor.SetDeformStrength(float.Parse(inputFields[0].text));
+    }
+
+    public void SetOscillationAmplitude()
+    {
+        convertor.SetOscillationAmplitude(float.Parse(inputFields[1].text));
+    }
+
+    public void SetOscillationSpeed()
+    {
+        convertor.SetOscillationSpeed(float.Parse(inputFields[2].text));
     }
 }
 

@@ -1287,6 +1287,10 @@
       <Project>{79A1B2AC-F52E-583A-C9AE-1168E46BBA5B}</Project>
       <Name>Unity.RenderPipelines.GPUDriven.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="RuntimeInspector.Runtime.csproj">
+      <Project>{4445DC24-FD94-3096-C2F6-BC7E32B60916}</Project>
+      <Name>RuntimeInspector.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Collections.csproj">
       <Project>{B020DD5B-B977-E236-089A-E845BA800753}</Project>
       <Name>Unity.Collections</Name>

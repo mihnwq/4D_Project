@@ -15,12 +15,10 @@ public class _3Dto4D
 
     [Header("W Controls")]
     public float wOffset = 0f;
-    public bool wOscillation = false;
-    public float wOscillationAmplitude = 0.5f;
+    public float wOscillationAmplitude = 0;
     public float wOscillationSpeed = 2f;
 
-    public bool wDeform = false;
-    public float wDeformStrength = 0.2f;
+    public float wDeformStrength = 0;
 
     private Mesh originalMesh;
     private Mesh workingMesh;
@@ -37,6 +35,21 @@ public class _3Dto4D
     public void SetSpeed(float speed)
     {
         rotationSpeed = speed;
+    }
+
+    public void SetDeformStrength(float wDeformStrength)
+    {
+        this.wDeformStrength = wDeformStrength;
+    }
+
+    public void SetOscillationAmplitude(float wOscillationAmplitude)
+    {
+        this.wOscillationAmplitude = wOscillationAmplitude;
+    }
+
+    public void SetOscillationSpeed(float wOscillationSpeed)
+    {
+        this.wOscillationSpeed = wOscillationSpeed;
     }
 
     public void Init()
@@ -59,6 +72,8 @@ public class _3Dto4D
     }
 
     private float angle;
+    private float lastAngle;
+    private float lastOscillation;
 
     public void UpdateMesh()
     {
@@ -67,7 +82,7 @@ public class _3Dto4D
 
          angle += Time.deltaTime * rotationSpeed * Mathf.Rad2Deg;
 
-        
+
 
         for (int i = 0; i < baseVertices4D.Length; i++)
         {
@@ -77,12 +92,16 @@ public class _3Dto4D
 
             v.w += wOffset;
 
-            if (wOscillation)
-                v.w += Mathf.Sin(Time.time * wOscillationSpeed) * wOscillationAmplitude;
+            if (angle != lastAngle)
+            {
+                lastOscillation = Mathf.Sin(Time.time * wOscillationSpeed) * wOscillationAmplitude;
+                v.w += lastOscillation;
+            }
+            else v.w += lastOscillation;
+            
 
+            v.w += (v.x + v.y + v.z) * wDeformStrength;
 
-            if (wDeform)
-                v.w += (v.x + v.y + v.z) * wDeformStrength;
 
             currentVertices4D[i] = v;
 
@@ -100,9 +119,11 @@ public class _3Dto4D
        
 
             // Update mesh
-            workingMesh.vertices = projected3D;
+        workingMesh.vertices = projected3D;
         workingMesh.RecalculateNormals();
         workingMesh.RecalculateBounds();
+
+        lastAngle = angle;
     }
 
        
