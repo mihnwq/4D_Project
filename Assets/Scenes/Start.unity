@@ -204,7 +204,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1578663809}
         m_TargetAssemblyTypeName: GamePanel, Assembly-CSharp
-        m_MethodName: OnClickVisualisation
+        m_MethodName: OnClickSimulation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

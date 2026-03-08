@@ -95,10 +95,9 @@ public class _3Dto4D
             if (angle != lastAngle)
             {
                 lastOscillation = Mathf.Sin(Time.time * wOscillationSpeed) * wOscillationAmplitude;
-                v.w += lastOscillation;
             }
-            else v.w += lastOscillation;
-            
+
+            v.w += lastOscillation;
 
             v.w += (v.x + v.y + v.z) * wDeformStrength;
 
