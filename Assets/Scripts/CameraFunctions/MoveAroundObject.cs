@@ -41,7 +41,7 @@ class MoveAroundObject : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetMouseButton(1))
+        if(Input.GetMouseButton(1) || Input.touchCount == 1)
         {
             moveAroundObject(mapSmoothTime, smallestClampDown);
         }
@@ -55,8 +55,20 @@ class MoveAroundObject : MonoBehaviour
     public void moveAroundObject(float smoothTime, float smallestClampDown)
     {
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float mouseX = 0f;
+        float mouseY = 0f;
+
+        if (Input.GetMouseButton(1))
+        {
+            mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        }
+        else if (Input.touchCount == 1)
+        {
+            Touch touch = Input.GetTouch(0);
+            mouseX = touch.deltaPosition.x * mouseSensitivity * 0.02f;
+            mouseY = touch.deltaPosition.y * mouseSensitivity * 0.02f;
+        }
 
         rotationY += mouseX;
 
@@ -82,9 +94,6 @@ class MoveAroundObject : MonoBehaviour
         offset.y -= offset.y / 2;
 
         Vector3 finalTarget = nextPosition;
-
-
-
 
         transform.position = finalTarget;
 

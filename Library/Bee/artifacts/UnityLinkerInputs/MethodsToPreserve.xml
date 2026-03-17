@@ -1,0 +1,51 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="CanvasManager">
+			<method name="OnScroll"/>
+		</type>
+		<type fullname="DropdownHandler">
+			<method name="OnDropdownChanged"/>
+			<method name="OnDropdownSelection"/>
+		</type>
+		<type fullname="GamePanel">
+			<method name="OnClickMenu"/>
+			<method name="OnClickMenu"/>
+			<method name="OnClickSimulation"/>
+			<method name="OnClickVisualisation"/>
+		</type>
+		<type fullname="ObjectAtributesSelection">
+			<method name="SetDeformStrength"/>
+			<method name="SetOscillationAmplitude"/>
+			<method name="SetOscillationSpeed"/>
+		</type>
+		<type fullname="PC_Selection">
+			<method name="OpenFileBrowser"/>
+		</type>
+	</assembly>
+	<assembly fullname="Unity.RenderPipelines.Core.Runtime" ignoreIfMissing="1">
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerButton">
+			<method name="OnAction"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerIntField">
+			<method name="OnDecrement"/>
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+			<method name="OnIncrement"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerObjectPopupField">
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerPanel">
+			<method name="OnScrollbarClicked"/>
+			<method name="OnScrollbarClicked"/>
+			<method name="ResetDebugManager"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerUIntField">
+			<method name="OnDecrement"/>
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+			<method name="OnIncrement"/>
+		</type>
+	</assembly>
+</linker>
